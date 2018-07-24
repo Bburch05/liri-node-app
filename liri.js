@@ -42,15 +42,18 @@ function searchMovie(){
     else {
         movieTitle = "Mr. Nobody"
     }
-    request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieTitle , function (error, response, body) {
+    request('http://www.omdbapi.com/?apikey=trilogy&type=movie&t=' + movieTitle , function (error, response, body) {
         var movie = JSON.parse(body)
-        console.log("================");
+        console.log("\n================");
         console.log("Title: " + movie.Title);
         console.log("Year Released: " + movie.Year);
         console.log("IMDB Rating: " + movie.Ratings[0].Value)
         console.log("Rotton Tomatoes Rating: " + movie.Ratings[1].Value)
         console.log("Actors: " + movie.Actors)
-        console.log("Plot: \n" + movie.Plot)
+        console.log("Language: " + movie.Language)
+        console.log("Country Produced: " + movie.Country)
+        console.log("\n=========Plot========\n\n" + movie.Plot)
+        console.log("\n========================\n")
 });
 };
 
@@ -135,10 +138,13 @@ function switchFunction(){
             case "do-what-it-says":
                 doWhatItSays();
                 break;
+
+            default:
+                console.log("\nI'm not sure what you want me to do");
         }
     }
     else {
-        console.log("I Don't know what you want me to do")
+        console.log("\nYou didn't tell me what you wanted to do")
     }
 }
 
