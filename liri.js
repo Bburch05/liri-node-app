@@ -16,11 +16,26 @@ var songName
 
 // Functions
 function showTweets(){
+
+    if (!argument){
     var params = {
         screen_name: 'austin_walker',
         count: 20,
-        trim_user: true
+        trim_user: true,
+        include_rts: false
     };
+    }
+
+    else{
+        var params = {
+            screen_name: argument,
+            count: 20,
+            trim_user: true,
+            include_rts: false
+        };
+    };
+
+
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
   if (!error) {
     for(var i = 0; i < tweets.length; i++){
